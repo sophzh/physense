@@ -43,14 +43,13 @@ export default function Input() {
                     placeholder=''
                 />
             </View>
-            {/* <View style={styles.container}>
-                <Text style={styles.label}>Password</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder='' 
-                    // secureTextEntry
-                />
-            </View> */}
+
+        <View style={styles.main}>
+            <TouchableOpacity style={styles.container2}>
+                <Text style={styles.loginenter}>enter!</Text>
+            </TouchableOpacity>
+        </View>
+
         </KeyboardAvoidingView>
     );
 }
@@ -77,5 +76,23 @@ const styles = StyleSheet.create({
         width: '80%',
         padding: 5,
         backgroundColor: '#f0f4f8',
+    },
+
+    main: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    container2: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#08426B',
+        borderRadius: 10,
+        marginTop: 27,
+    },
+    loginenter: {
+        fontSize: 17,
+        fontWeight: '600',
+        padding: 10,
+        color: '#fff',
     },
 })

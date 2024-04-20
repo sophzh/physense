@@ -8,14 +8,12 @@ import {
 import React from 'react';
 
 import Input from './Input'
-import LoginEnter from '../components/Loginenter';
 
 export default function Login() {
     return(
         <View style={styles.container}>
             <Text style={styles.welcome}>welcome!</Text>
             <Input />
-            <LoginEnter />
         </View>
     );
 }
