@@ -11,23 +11,27 @@ import {
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
 export default function Input() {
 
     const [username, setUsername] = useState('');
 
-    const handleRegister = async () => {
+    const handleSubmit = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/register', {
+            const response = await axios.post('http://localhost:3000/user', {
                 username,
             });
 
             if (response.status === 201) {
-                console.log('User registered successfully');
-                // Navigate to another screen or give feedback to the user
+                console.log('User created');
+                // Navigate to another screen or display specific data
+            } else if (response.status === 200) {
+                console.log('User exists');
+                // Display user-specific data
             }
         } catch (error) {
-            console.error('Registration failed', error);
-            // Handle errors appropriately
+            console.error('Error during request', error);
+            // Handle errors
         }
     };
 
@@ -41,11 +45,13 @@ export default function Input() {
                 <TextInput
                     style={styles.input}
                     placeholder=''
+                    value={username}
+                    onChangeText={setUsername}
                 />
             </View>
 
         <View style={styles.main}>
-            <TouchableOpacity style={styles.container2}>
+            <TouchableOpacity style={styles.container2} onPress={handleSubmit}>
                 <Text style={styles.loginenter}>enter!</Text>
             </TouchableOpacity>
         </View>
