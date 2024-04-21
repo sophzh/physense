@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, Button, ScrollView } from 'react-native';
 import Header from '../components/Header';
 import SliderContext from '../components/Slidercontext';
-
+import DailyResult from '../components/DailyResult';
 const Result = ({ navigation }) => {
 
   const { sliderValues } = useContext(SliderContext); // Access the slider values from context
@@ -42,6 +42,9 @@ const Result = ({ navigation }) => {
           The average slider value is {(average * 100).toFixed(0)}
         </Text>
         <Text style={styles.messageText}>{message}</Text>
+
+        <DailyResult> </DailyResult>
+
       </ScrollView>
     </View>
   );
