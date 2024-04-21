@@ -7,21 +7,23 @@ import {
     Platform,
     TouchableOpacity
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import { UsernameContext } from '../components/UsernameContext';
 
 
-export default function Input({ navigation }) {
-
-    const [username, setUsername] = useState('');
+export default function Input({navigation}) {
+    const [username, setUsername] = useContext(UsernameContext);
 
     function handleSubmit() {
         axios.post('http://localhost:3000/register', { name: username })
             .then(res => {
                 console.log(res.data);  
                 if (res.data.data === 'empty') { // Check if res.data is 'empty'
+                    setUsername(username)
                     console.log('Response data is empty, not navigating');
                 } else {
+                    setUsername(username)
                     navigation.navigate('MainApp', { username }); // Navigate only if res.data is not 'empty'
                 }
             })

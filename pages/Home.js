@@ -3,8 +3,13 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity } from 'react-native';
 import Header from '../components/Header';
 import QuestionWithSlider from '../components/SlideComponent';
+import { UsernameContext } from '../components/UsernameContext';
+import axios from 'axios';
 
 const HomePage = ({ navigation }) => {
+
+  const [username, setUsername] = useContext(UsernameContext);
+
 
 const [sliderValues, setSliderValues] = useState([]); // Local state for slider values
 
