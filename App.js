@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import SliderContext, { SliderProvider } from './components/Slidercontext';
 import Login from './pages/Login';
 import Tabs from './components/Tabs';
 
@@ -11,6 +11,7 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
+    <SliderProvider>
     <NavigationContainer style={styles.container}>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
@@ -26,9 +27,10 @@ export default function App() {
           options={{  
             headerShown: false
           }}
-        />
+          />
       </Stack.Navigator>
     </NavigationContainer>
+    </SliderProvider>
   );
 }
 
