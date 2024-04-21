@@ -23,9 +23,13 @@ const QuestionWithSlider = ({ question }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.questionContainer}>  
       <Text style={styles.questionText}>{question}</Text>
+      </View>
+      <View style={styles.sliderContainer}> 
+      <Text style={styles.sliderValue}> 0 </Text>
       <Slider
-        style={{width: 320, height: 40}}
+        style={{ flex: 1, height: 40 }}
         minimumValue={0}
         maximumValue={1}
         minimumTrackTintColor={lineColor}
@@ -34,7 +38,8 @@ const QuestionWithSlider = ({ question }) => {
         onValueChange={handleSliderChange}
         // Other props as needed
       />
-      <Text style={styles.sliderValue}>{sliderValue.toString().slice(0, 4)}</Text>
+      <Text style={styles.sliderValue}> 10 </Text>
+      </View>
     </View>
   );
 };
@@ -55,10 +60,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginBottom: 20,
   },
+  sliderContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+  },
   sliderValue: {
-    marginTop: 10,
     fontSize: 12,
   },
+  questionContainer: {
+    alignSelf: 'flex-start',
+  }
 });
 
 export default QuestionWithSlider;
