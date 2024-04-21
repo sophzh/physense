@@ -37,6 +37,12 @@ app.post('/register', async(req,res)=>{
     //get name that want
     const {name} = req.body;
 
+    //try to find the user
+    const oldUser = await User.findOne({name:name})
+    if(oldUser){
+        res.send({data: "User already exists!"})
+    }
+
     try{
         //try to create User name
         //tells it to create a user and give it the name name
