@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomePage from '../pages/Home';
-import Login from '../pages/Login';
+import Result from '../pages/Result';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,10 +20,9 @@ export default function Tabs() {
             }}
             style = {styles.container}
         >
-            <Tab.Screen name='loginpage' component={Login} />
             <Tab.Screen name='homepage' component={HomePage} />
-            {/* <Tab.Screen name='homepage' component={HomePage} />
-            <Tab.Screen name='homepage' component={HomePage} /> */}
+            <Tab.Screen name='result' component={Result} />
+            {/* <Tab.Screen name='homepage' component={HomePage} /> */}
         </Tab.Navigator>
     );
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Slider from '@react-native-community/slider'; // Import the slider component
 
-const QuestionWithSlider = ({ question }) => {
+const QuestionWithSlider = ({ question, low, high }) => {
   const [sliderValue, setSliderValue] = useState(0); // State to hold slider value
   const[lineColor, setLineColor] = useState("#F0F4F8");
 
@@ -27,7 +27,7 @@ const QuestionWithSlider = ({ question }) => {
       <Text style={styles.questionText}>{question}</Text>
       </View>
       <View style={styles.sliderContainer}> 
-      <Text style={styles.sliderValue}> 0 </Text>
+      <Text style={styles.sliderValue}> {low} </Text>
       <Slider
         style={{ flex: 1, height: 40 }}
         minimumValue={0}
@@ -38,7 +38,7 @@ const QuestionWithSlider = ({ question }) => {
         onValueChange={handleSliderChange}
         // Other props as needed
       />
-      <Text style={styles.sliderValue}> 10 </Text>
+      <Text style={styles.sliderValue}> {high} </Text>
       </View>
     </View>
   );

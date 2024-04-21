@@ -9,11 +9,11 @@ import React from 'react';
 
 import Input from './Input'
 
-export default function Login() {
+export default function Login({ navigation }) {
     return(
         <View style={styles.container}>
             <Text style={styles.welcome}>welcome!</Text>
-            <Input />
+            <Input navigation={navigation} />
         </View>
     );
 }
