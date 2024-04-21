@@ -15,9 +15,17 @@ export default function Input({ navigation }) {
 
     const [username, setUsername] = useState('');
 
-    function handleSubmit(){
-        axios.post('http://localhost:3000/register', {name : username}).then(res=>console.log(res.data)).catch(e=>console.log(e));
-        navigation.navigate('MainApp', { username });
+    function handleSubmit() {
+        axios.post('http://localhost:3000/register', { name: username })
+            .then(res => {
+                console.log(res.data);  
+                if (res.data.data === 'empty') { // Check if res.data is 'empty'
+                    console.log('Response data is empty, not navigating');
+                } else {
+                    navigation.navigate('MainApp', { username }); // Navigate only if res.data is not 'empty'
+                }
+            })
+            .catch(e => console.log(e));
     };
 
     return (
