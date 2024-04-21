@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 
 //so create a user schema, that is in the collection UserInfo
 const User = new mongoose.Schema({
-    //make the name unique
-    name:{type: String, unique: true}
+      //make the name unique
+      name:{type: String, unique: true},
+      //initialize health as an empty array so later wecan change things 
+      health:{type: Array, default:[]}
 }, {
     collection:"UserInfo"
 });
