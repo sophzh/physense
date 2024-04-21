@@ -30,6 +30,9 @@ const DailyResult = ({ average }) => {
           <View style={styles.backContent}> 
             <Average style={styles.centeredText} />
           </View>
+          <View style={styles.otherImageContainer}>
+          <Image source={require('../assets/ewi-star.png')} style={styles.otherImage}/>
+          </View>
         </View>
     </FlipCard>
     </View>
@@ -78,9 +81,18 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: -40,
       },
+      otherImageContainer: {
+        position: 'absolute',
+        bottom: 0,
+        left: 165,
+      },
       image: {
         width: 150,
         height: 150,
+      },
+      otherImage: {
+        width: 130,
+        height: 130,
       }
 });
 
