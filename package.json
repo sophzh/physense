@@ -6,14 +6,18 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "@react-native-community/slider": "^4.5.2",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
+    "axios": "^1.6.8",
     "expo": "~50.0.14",
     "expo-status-bar": "~1.11.1",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.2",
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-modal": "^13.0.1",

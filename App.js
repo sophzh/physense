@@ -7,7 +7,7 @@ import Tabs from './components/Tabs';
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer style={styles.container}>
       <Tabs />
     </NavigationContainer>
   );
@@ -15,8 +15,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f0f4f8',
     alignItems: 'center',
     justifyContent: 'center',
   },
