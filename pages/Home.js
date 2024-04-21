@@ -1,23 +1,45 @@
 import React, { useContext } from 'react';
 import { useState } from 'react';
-import { View, Text, StyleSheet, Button, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity } from 'react-native';
 import Header from '../components/Header';
 import QuestionWithSlider from '../components/SlideComponent';
-import SliderContext from '../components/Slidercontext';
-
+import { UsernameContext } from '../components/UsernameContext';
+import axios from 'axios';
 
 const HomePage = ({ navigation }) => {
 
-  const { addSliderValue } = useContext(SliderContext); // Get the context function to add slider values
+const [username, setUsername] = useContext(UsernameContext);
 
-  const handleSliderChange = (value) => {
-    addSliderValue(value); // Add the slider value to context
-  };
+
+const [sliderValues, setSliderValues] = useState([]); // Local state for slider values
+
+const handleSliderChange = (index, value) => {
+  setSliderValues((prevValues) => {
+    const updatedValues = [...prevValues];
+    updatedValues[index] = value; // Update the value at the correct index
+    return updatedValues;
+  });
+};
+
+const sum = sliderValues.reduce((acc, val) => acc + val, 0);
+
+const average = sliderValues.length ? sum / sliderValues.length : 0;
+console.log(sliderValues)
+  // Function to handle the button press
+  const handleSubmit = async () => {
+
+      await axios.post('http://localhost:3000/AddHealthData', { health: average, name: username }).then(response => {
+        console.log(response.data);
+      }).catch(error=>{
+        console.error('Error:', error);
+      });
+    }
 
   return (
     <View style={styles.maincontainer}>
       <View style={styles.header}>
         <Header navigation={navigation} />
+        <Text style={styles.username}>{username}</Text>
       </View>
       <ScrollView 
         style={styles.scrollview}
@@ -25,26 +47,26 @@ const HomePage = ({ navigation }) => {
       >
         <View style={styles.container}>
           <QuestionWithSlider 
-            question="how happy are you" 
+            question="are you happy with today" 
             index={0}
-            low='0' 
-            high='11' 
+            low='no' 
+            high='very' 
             onSliderChange={handleSliderChange}> 
           </QuestionWithSlider>
 
           <QuestionWithSlider 
-            question="how sad are you" 
+            question="rate you current level of social connectedness" 
             index={1}
-            low='very' 
-            high='not' 
+            low='0' 
+            high='10' 
             onSliderChange={handleSliderChange}> 
           </QuestionWithSlider>
 
           <QuestionWithSlider 
-            question="how stressed are you"
+            question="how motivated are you feeling today"
             index={2} 
-            low='very' 
-            high='not' 
+            low='0' 
+            high='10' 
             onSliderChange={handleSliderChange}> 
           </QuestionWithSlider>
 
@@ -60,49 +82,55 @@ const HomePage = ({ navigation }) => {
             question="how much do u need a hug" 
             index={4}
             low='a lot' 
-            high='ew' 
+            high='always' 
             onSliderChange={handleSliderChange}>
           </QuestionWithSlider>
 
           <QuestionWithSlider 
-            question="are you in pain" 
+            question="have you felt overwhelmed today" 
             index={5}
-            low='no' 
-            high='..yes..' 
+            low='..yes' 
+            high='no' 
             onSliderChange={handleSliderChange}> 
           </QuestionWithSlider>
 
           <QuestionWithSlider 
-            question="q7" 
+            question="how relaxed do you feel right now" 
             index={6}
             low='0' 
-            high='11' 
+            high='10' 
             onSliderChange={handleSliderChange}> 
           </QuestionWithSlider>
 
           <QuestionWithSlider 
-            question="q8" 
+            question="where would you rate your level of optimism" 
             index={7}
             low='0' 
-            high='11' 
+            high='10' 
             onSliderChange={handleSliderChange}> 
           </QuestionWithSlider>
 
           <QuestionWithSlider 
-            question="q9" 
+            question="are you excited for tomorrow" 
             index={8}
-            low='0' 
-            high='11' 
+            low='no' 
+            high='yes!' 
             onSliderChange={handleSliderChange}> 
           </QuestionWithSlider>
 
           <QuestionWithSlider 
-            question="q10" 
+            question="how is your current life balance" 
             index={9}
-            low='0' 
-            high='11' 
+            low='gone' 
+            high='great' 
             onSliderChange={handleSliderChange}> 
           </QuestionWithSlider>
+
+          <View style={styles.main}>
+            <TouchableOpacity style={styles.container2} onPress={handleSubmit}>
+                <Text style={styles.submit}>submit!</Text>
+            </TouchableOpacity>
+          </View>
 
         </View>
       </ScrollView>
@@ -114,7 +142,10 @@ const styles = StyleSheet.create({
   maincontainer: {
     paddingTop: 55,
     backgroundColor: "#F0F4F8",
-
+  },
+  username: {
+    fontWeight: '500',
+    paddingBottom: 10,
   },
   header: {
     alignItems: 'center',
@@ -138,7 +169,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F0F4F8",
     paddingHorizontal: 20,
     paddingBottom: 133,
-    marginBottom: 88,
+    marginBottom: 133,
   },
   content: {
     fontSize: 16,

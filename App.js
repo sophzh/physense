@@ -1,16 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, ThemeProvider } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SliderContext, { SliderProvider } from './components/Slidercontext';
 import Login from './pages/Login';
 import Tabs from './components/Tabs';
+import { UsernameContext } from './components/UsernameContext';
+
+
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [username, setUsername] = useState('');
+
+
   return (
+    <UsernameContext.Provider value={[username, setUsername]}>
+
     <SliderProvider>
     <NavigationContainer style={styles.container}>
       <Stack.Navigator initialRouteName="Login">
@@ -31,6 +39,7 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
     </SliderProvider>
+    </UsernameContext.Provider>
   );
 }
 
