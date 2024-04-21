@@ -9,13 +9,23 @@
     "web": "expo start --web"
   },
   "dependencies": {
+<<<<<<< Updated upstream
+=======
+    "@react-native-community/slider": "^4.5.2",
+    "@react-navigation/bottom-tabs": "^6.5.20",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/stack": "^6.3.29",
+    "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
+>>>>>>> Stashed changes
     "expo": "~50.0.14",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
     "react-native": "0.73.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "react-native-version": "^4.0.0"
   },
   "private": true
 }
