@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 import FlipCard from 'react-native-flip-card';
+import Average from './Average';
 
-const DailyResult = () => {
+const DailyResult = ({ average }) => {
   
   return (
     <View style={styles.maincontainer}>
@@ -23,10 +24,12 @@ const DailyResult = () => {
         <View style={styles.imageContainer}>
           <Image source={require('../assets/ewi-icon.png')} style={styles.image}/>
         </View>
-      </View>
-        <View/>
+        </View>
+
         <View style={styles.back}>
-            <Text> The Back </Text>
+          <View style={styles.backContent}> 
+            <Average style={styles.centeredText} />
+          </View>
         </View>
     </FlipCard>
     </View>
@@ -57,9 +60,18 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
       },
+      back: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      backContent: {
+        flex: 1,
+        justifyContent: 'center',
+      },
       centeredText: {
         textAlign: 'center',
-        fontSize: 15
+        fontSize: 15,
       },
       imageContainer: {
         position: 'absolute',
