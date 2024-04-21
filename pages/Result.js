@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { View, Text, StyleSheet, Button, ScrollView } from 'react-native';
 import Header from '../components/Header';
-
+import DailyResult from '../components/DailyResult';
 const Result = ({ navigation }) => {
   return (
     <View style={styles.maincontainer}>
@@ -13,7 +13,7 @@ const Result = ({ navigation }) => {
         style={styles.scrollview}
         contentContainerStyle={styles.contentContainer}
       >
-
+        <DailyResult> </DailyResult>
       </ScrollView>
     </View>
   );
