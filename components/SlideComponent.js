@@ -30,24 +30,32 @@ const QuestionWithSlider = ({ index, question, low, high }) => {
       <Text style={styles.questionText}>{question}</Text>
       </View>
       <View style={styles.sliderContainer}> 
-      <Text style={styles.sliderValue}> {low} </Text>
-      <Slider
-        style={{ flex: 1, height: 40 }}
-        minimumValue={0}
-        maximumValue={1}
-        minimumTrackTintColor={lineColor}
-        maximumTrackTintColor="#F0F4F8"
-        value={sliderValue}
-        onValueChange={handleSliderChange}
-        // Other props as needed
-      />
-      <Text style={styles.sliderValue}> {high} </Text>
+        <Slider
+          style={{ flex: 1, height: 40 }}
+          minimumValue={0}
+          maximumValue={1}
+          minimumTrackTintColor={lineColor}
+          maximumTrackTintColor="#F0F4F8"
+          value={sliderValue}
+          onValueChange={handleSliderChange}
+          // Other props as needed
+        />
+        <View style={styles.labels}>
+          <Text style={styles.sliderValue}> {high} </Text>
+          <Text style={styles.sliderValue}> {low} </Text>
+        </View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  labels: {
+    width: '100%',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    paddingTop: 20,
+  },
   container: {
     // flex: 1,
     alignItems: 'center',
@@ -56,15 +64,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     marginVertical: 12,
+    
     width: 360,
     height: 169
   },
   questionText: {
     fontSize: 14,
-    marginBottom: 20,
+    marginBottom: 25,
+    paddingBottom: 12,
   },
   sliderContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
   },
