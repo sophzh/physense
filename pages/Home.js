@@ -23,7 +23,6 @@ const HomePage = ({ navigation }) => {
           <QuestionWithSlider question="where's your mind at" low='bad' high='perf'> </QuestionWithSlider>
           <QuestionWithSlider question="how much do u need a hug" low='a lot' high='ew'> </QuestionWithSlider>
           <QuestionWithSlider question="are you in pain" low='no' high='..yes..'> </QuestionWithSlider>
-
         </View>
       </ScrollView>
     </View>
@@ -53,11 +52,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   container: {
-    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "#F0F4F8",
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 133,
+    marginBottom: 88,
   },
   content: {
     fontSize: 16,

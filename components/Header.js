@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         borderRadius: 20, // Rounded corners
         paddingHorizontal: 10, // Padding for the button
         paddingVertical: 3,
-        backgroundColor: '#fff',
+        backgroundColor: '#486580',
     },
     dateContainer: {
         alignSelf: 'flex-start', // Align to the left
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         color: '#486580',
     },
     enter: {
-        color: '#486580',
+        color: '#fff',
         fontWeight: '600',
         fontSize: 10,
     }, 
