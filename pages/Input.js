@@ -16,23 +16,23 @@ export default function Input({ navigation }) {
     const [username, setUsername] = useState('');
 
     const handleSubmit = async () => {
-        // try {
-        //     const response = await axios.post('http://localhost:3000/register', {
-        //         name: username,
-        //     });
+        try {
+            const response = await axios.post('http://localhost:3000/register', {
+                name: username,
+            });
 
-        //     if (response.status === 201) {
-        //         console.log('User created');
-        //         navigation.navigate('MainApp', { username });
-        //     } else if (response.status === 200) {
-        //         console.log('User exists');
-        //         navigation.navigate('MainApp', { username });
-        //         // Display user-specific data
-        //     }
-        // } catch (error) {
-        //     console.error('Error during request', error);
-        //     // Handle errors
-        // }
+            if (response.status === 201) {
+                console.log('User created');
+                navigation.navigate('MainApp', { username });
+            } else if (response.status === 200) {
+                console.log('User exists');
+                navigation.navigate('MainApp', { username });
+                // Display user-specific data
+            }
+        } catch (error) {
+            console.error('Error during request', error);
+            // Handle errors
+        }
         navigation.navigate('MainApp', { username });
     };
 
