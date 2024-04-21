@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 //so create a user schema, that is in the collection UserInfo
 const User = new mongoose.Schema({
-    name:String
+    name: String,
 }, {
     collection:"UserInfo"
 });

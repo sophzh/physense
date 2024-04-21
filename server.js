@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json())
 
 //give url 
 const mongoUrl = "mongodb+srv://gonickava:Mall8526@cluster0.nfsadew.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
@@ -30,6 +33,7 @@ app.get('/', (req,res)=>{
 
 })
 app.post('/register', async(req,res)=>{
+    console.log(req);
     //get name that want
     const {name} = req.body;
 
@@ -45,7 +49,7 @@ app.post('/register', async(req,res)=>{
     } catch(error){
         res.send({status:"error", data:error})
     }
-    
+
 
 })
 
