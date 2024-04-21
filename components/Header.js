@@ -1,12 +1,15 @@
 import React from 'react';
-import { useState } from 'react';
+import { useContext } from 'react';
 import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity } from 'react-native';
-
+import SliderContext from './Slidercontext';
 
 export default function Header({ navigation }) {
 
+    const { clearSliderValues } = useContext(SliderContext); // Access the clear function
+
     const handleLogout = () => {
         // Logic for handling logout (if any server-side operations are needed)
+        clearSliderValues(); // Clear the slider values on logout
         navigation.popToTop();
     };
 

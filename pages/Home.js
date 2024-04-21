@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { View, Text, StyleSheet, Button, ScrollView } from 'react-native';
 import Header from '../components/Header';
 import QuestionWithSlider from '../components/SlideComponent';
+import SliderContext from '../components/Slidercontext';
 
 
 const HomePage = ({ navigation }) => {
+
+  const { addSliderValue } = useContext(SliderContext); // Get the context function to add slider values
+
+  const handleSliderChange = (value) => {
+    addSliderValue(value); // Add the slider value to context
+  };
 
   return (
     <View style={styles.maincontainer}>
@@ -17,12 +24,86 @@ const HomePage = ({ navigation }) => {
         contentContainerStyle={styles.contentContainer}
       >
         <View style={styles.container}>
-          <QuestionWithSlider question="how happy are you" low='0' high='11'> </QuestionWithSlider>
-          <QuestionWithSlider question="how sad are you" low='very' high='not'> </QuestionWithSlider>
-          <QuestionWithSlider question="how stressed are you" low='very' high='not'> </QuestionWithSlider>
-          <QuestionWithSlider question="where's your mind at" low='bad' high='perf'> </QuestionWithSlider>
-          <QuestionWithSlider question="how much do u need a hug" low='a lot' high='ew'> </QuestionWithSlider>
-          <QuestionWithSlider question="are you in pain" low='no' high='..yes..'> </QuestionWithSlider>
+          <QuestionWithSlider 
+            question="how happy are you" 
+            index={0}
+            low='0' 
+            high='11' 
+            onSliderChange={handleSliderChange}> 
+          </QuestionWithSlider>
+
+          <QuestionWithSlider 
+            question="how sad are you" 
+            index={1}
+            low='very' 
+            high='not' 
+            onSliderChange={handleSliderChange}> 
+          </QuestionWithSlider>
+
+          <QuestionWithSlider 
+            question="how stressed are you"
+            index={2} 
+            low='very' 
+            high='not' 
+            onSliderChange={handleSliderChange}> 
+          </QuestionWithSlider>
+
+          <QuestionWithSlider 
+            question="where's your mind at" 
+            index={3}
+            low='bad' 
+            high='perf' 
+            onSliderChange={handleSliderChange}>
+          </QuestionWithSlider>
+
+          <QuestionWithSlider 
+            question="how much do u need a hug" 
+            index={4}
+            low='a lot' 
+            high='ew' 
+            onSliderChange={handleSliderChange}>
+          </QuestionWithSlider>
+
+          <QuestionWithSlider 
+            question="are you in pain" 
+            index={5}
+            low='no' 
+            high='..yes..' 
+            onSliderChange={handleSliderChange}> 
+          </QuestionWithSlider>
+
+          <QuestionWithSlider 
+            question="q7" 
+            index={6}
+            low='0' 
+            high='11' 
+            onSliderChange={handleSliderChange}> 
+          </QuestionWithSlider>
+
+          <QuestionWithSlider 
+            question="q8" 
+            index={7}
+            low='0' 
+            high='11' 
+            onSliderChange={handleSliderChange}> 
+          </QuestionWithSlider>
+
+          <QuestionWithSlider 
+            question="q9" 
+            index={8}
+            low='0' 
+            high='11' 
+            onSliderChange={handleSliderChange}> 
+          </QuestionWithSlider>
+
+          <QuestionWithSlider 
+            question="q10" 
+            index={9}
+            low='0' 
+            high='11' 
+            onSliderChange={handleSliderChange}> 
+          </QuestionWithSlider>
+
         </View>
       </ScrollView>
     </View>

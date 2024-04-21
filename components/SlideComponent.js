@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Slider from '@react-native-community/slider'; // Import the slider component
+import SliderContext from './Slidercontext';
 
-const QuestionWithSlider = ({ question, low, high }) => {
+const QuestionWithSlider = ({ index, question, low, high }) => {
+  const { addSliderValue } = useContext(SliderContext); // Get the context's add function
   const [sliderValue, setSliderValue] = useState(0); // State to hold slider value
   const[lineColor, setLineColor] = useState("#F0F4F8");
 
   // Function to handle slider value change
   const handleSliderChange = (value) => {
     setSliderValue(value);
+    addSliderValue(index, value); // Add slider value to context
 
   // Change color based on slider value
   if (value > 0.66) {
