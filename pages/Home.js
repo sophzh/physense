@@ -1,17 +1,33 @@
 import React, { useContext } from 'react';
 import { useState } from 'react';
-import { View, Text, StyleSheet, Button, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity } from 'react-native';
 import Header from '../components/Header';
 import QuestionWithSlider from '../components/SlideComponent';
-import SliderContext from '../components/Slidercontext';
-
 
 const HomePage = ({ navigation }) => {
 
-  const { addSliderValue } = useContext(SliderContext); // Get the context function to add slider values
+const [sliderValues, setSliderValues] = useState([]); // Local state for slider values
 
-  const handleSliderChange = (value) => {
-    addSliderValue(value); // Add the slider value to context
+const handleSliderChange = (index, value) => {
+  setSliderValues((prevValues) => {
+    const updatedValues = [...prevValues];
+    updatedValues[index] = value; // Update the value at the correct index
+    return updatedValues;
+  });
+};
+
+// Calculate the average value of the sliders
+const sum = sliderValues.reduce((acc, val) => acc + val, 0);
+const average = sliderValues.length ? sum / sliderValues.length : 0;
+
+  // Function to handle the button press
+  const handleSubmit = async () => {
+    try {
+      await axios.post('https://your-backend-url.com/submit', { average }); // Replace with your backend URL
+      console.log('Average value submitted to the backend.');
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
   };
 
   return (
@@ -103,6 +119,12 @@ const HomePage = ({ navigation }) => {
             high='11' 
             onSliderChange={handleSliderChange}> 
           </QuestionWithSlider>
+
+          <View style={styles.main}>
+            <TouchableOpacity style={styles.container2} onPress={handleSubmit}>
+                <Text style={styles.submit}>submit!</Text>
+            </TouchableOpacity>
+          </View>
 
         </View>
       </ScrollView>
